@@ -6,6 +6,7 @@ req.onreadystatechange=function(){
     console.log(req.readyState)
     if(req.readyState==4 && req.status==200){
         let resp=JSON.parse(req.responseText);
+        resp=resp.sort((a,b)=>a.Country<b.Country?-1:1)
         resp.forEach(e => {
             let li=document.createElement('li');
             li.setAttribute('id',e.ISO2);
